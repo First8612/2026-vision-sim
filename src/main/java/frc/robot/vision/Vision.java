@@ -3,16 +3,16 @@ package frc.robot.vision;
 import static edu.wpi.first.units.Units.Degrees;
 import static edu.wpi.first.units.Units.Radians;
 
+import java.io.IOException;
 import org.photonvision.simulation.VisionSystemSim;
-
 import edu.wpi.first.apriltag.AprilTagFieldLayout;
-import edu.wpi.first.apriltag.AprilTagFields;
 import edu.wpi.first.math.geometry.Pose3d;
 import edu.wpi.first.math.geometry.Rotation3d;
 import edu.wpi.first.math.geometry.Transform3d;
 import edu.wpi.first.math.geometry.Translation3d;
 import edu.wpi.first.networktables.NetworkTableInstance;
 import edu.wpi.first.networktables.StructPublisher;
+import edu.wpi.first.wpilibj.Filesystem;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Robot;
 import frc.robot.subsystems.Drivebase;
@@ -54,8 +54,15 @@ public class Vision extends SubsystemBase {
 
     private void setupSimulation() {
         visionSim = new VisionSystemSim("Main");
-        visionSim.addAprilTags(
-                AprilTagFieldLayout.loadField(AprilTagFields.kDefaultField));
+
+        try {
+            var resource = Filesystem.getDeployDirectory().getAbsolutePath() + "/2026-rebuilt-welded.json";
+            visionSim.addAprilTags(
+                new AprilTagFieldLayout(resource)
+            );
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
         camera1.addToSim(visionSim);
         // raw stream simulation: http://localhost:1181/
@@ -68,7 +75,6 @@ public class Vision extends SubsystemBase {
         camera3.addToSim(visionSim);
         // raw stream simulation: http://localhost:1185/
         // processed stream simulation: http://localhost:1186/
-
     }
 
     @Override
