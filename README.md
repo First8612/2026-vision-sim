@@ -9,5 +9,10 @@ Vision and field positioning has been very troublesome for our team, and usually
 
 ## Example of it working
 ![Vision simulation screen capture](docs/screen-capture-0cb74.gif)
-*Figure: Vision simulation running in the simulator.*
+
+
+
+## Next Ideas:
+- Simulate pose estimation from the cameras.
+- An example of a mix of PV cameras, and Limelights.
 
