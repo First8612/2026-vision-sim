@@ -16,7 +16,6 @@ public class CameraPV implements Camera {
         public CameraPV(String name, Transform3d robotToCamera) {
             this.camera = new PhotonCamera(name);
             this.robotToCamera = robotToCamera;
-
         }
 
         @Override
