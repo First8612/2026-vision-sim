@@ -12,6 +12,8 @@ import frc.robot.subsystems.Telemetry;
 import frc.robot.vision.Vision;
 import edu.wpi.first.math.geometry.Pose2d;
 import edu.wpi.first.math.geometry.Rotation2d;
+import edu.wpi.first.wpilibj.PowerDistribution;
+import edu.wpi.first.wpilibj.PowerDistribution.ModuleType;
 import edu.wpi.first.wpilibj.smartdashboard.Field2d;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.Command;
@@ -34,6 +36,9 @@ public class RobotContainer {
     configureBindings();
 
     SmartDashboard.putData(drivebase);
+
+    // commenting out for now. PDP isn't working right.
+    // SmartDashboard.putData(new PowerDistribution(17, ModuleType.kRev));
   }
 
   private void configureBindings() {
