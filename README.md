@@ -9,7 +9,7 @@ Vision and field positioning has been very troublesome for our team, and usually
 
 ## Example of it working
 ![Vision simulation screen capture](docs/screen-capture-0cb74.gif)
-
+(note: field is showing 2025 AprilTag layout, because the 2026 layout wasn't available yet in WPILib).
 
 
 ## Next Ideas:
